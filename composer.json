@@ -1,0 +1,26 @@
+{
+    "name": "wormhit/InstallScripts",
+    "description": "php api bootstrap project using slim for routing and pimple for dependency injection container",
+    "license": "Apache-2.0",
+    "type": "framework",
+    "keywords": [
+        "slim",
+        "api",
+        "framework"
+    ],
+    "homepage": "https://github.com/wormhit/slimApi",
+    "authors": [
+        {
+            "name": "Andrejs Stepanovs",
+            "email": "andrejsstepanovs@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "2.*",
+        "pimple/pimple": "2.0.*@dev",
+        "phpunit/phpunit": "4.*"
+    },
+    "autoload": {
+        "psr-4": {"SlimApi\\": "src/"}
+    }
+}
