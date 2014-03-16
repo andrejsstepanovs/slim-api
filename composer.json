@@ -1,5 +1,5 @@
 {
-    "name": "wormhit/InstallScripts",
+    "name": "wormhit/slim-api",
     "description": "php api bootstrap project using slim for routing and pimple for dependency injection container",
     "license": "Apache-2.0",
     "type": "framework",
