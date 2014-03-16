@@ -14,7 +14,6 @@ before_script:
 script:
   - cd $TRAVIS_BUILD_DIR;
   - vendor/bin/phpunit --configuration travis.phpunit.xml
-  - php vendor/bin/coveralls -v
 
 after_script:
   - wget https://scrutinizer-ci.com/ocular.phar
