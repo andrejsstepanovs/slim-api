@@ -5,11 +5,12 @@ php:
   - hhvm
 
 before_script:
-  - php composer.phar install
+  - cd $TRAVIS_BUILD_DIR;
   - chmod 777 travis.phpunit.xml
+  - php -r "readfile('https://getcomposer.org/installer');" | php
+  - php composer.phar install
 
 script:
   - cd $TRAVIS_BUILD_DIR;
-  - php -r "readfile('https://getcomposer.org/installer');" | php
   - vendor/bin/phpunit -c $TRAVIS_BUILD_DIR/travis.phpunit.xml
   - php vendor/bin/coveralls -v
