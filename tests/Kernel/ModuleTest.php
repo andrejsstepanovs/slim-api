@@ -6,6 +6,11 @@ use PHPUnit_Framework_TestCase;
 use SlimApi\Kernel\Module;
 use SlimApi\Kernel\Routing;
 
+/**
+ * Class ModuleTest
+ *
+ * @package Tests
+ */
 class ModuleTest extends PHPUnit_Framework_TestCase
 {
     /** @var Module */

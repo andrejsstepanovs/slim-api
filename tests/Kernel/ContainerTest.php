@@ -9,6 +9,11 @@ use SlimApi\Kernel\Module;
 use SlimApi\Kernel\Config;
 use Slim\Slim;
 
+/**
+ * Class ContainerTest
+ *
+ * @package Tests
+ */
 class ContainerTest extends PHPUnit_Framework_TestCase
 {
     /** @var Container */

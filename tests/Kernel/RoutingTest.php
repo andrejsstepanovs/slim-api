@@ -7,6 +7,11 @@ use SlimApi\Kernel\Routing;
 use SlimApi\Kernel\Container;
 use Slim\Slim;
 
+/**
+ * Class RoutingTest
+ *
+ * @package Tests
+ */
 class RoutingTest extends PHPUnit_Framework_TestCase
 {
     /** @var Routing */
