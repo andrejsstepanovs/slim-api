@@ -3,15 +3,13 @@ language: php
 php:
   - "5.5"
   - "5.4"
-  - hhvm
+#  - hhvm
 
 before_script:
   - curl -sS https://getcomposer.org/installer | php
   - php composer.phar install
   - chmod 777 travis.phpunit.xml
   - mkdir -p build/logs
-  - pwd
-  - ls -al
 
 script:
   - cd $TRAVIS_BUILD_DIR;
