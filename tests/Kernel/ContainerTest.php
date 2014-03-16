@@ -105,10 +105,10 @@ class ContainerTest extends PHPUnit_Framework_TestCase
              ->will($this->returnSelf());
 
         $this->getConfigMock()
-            ->expects($this->any())
-            ->method('get')
-            ->with($this->equalTo(Config::ROUTING))
-            ->will($this->returnValue($this->getRoutingMock()));
+             ->expects($this->any())
+             ->method('get')
+             ->with($this->equalTo(Config::ROUTING))
+             ->will($this->returnValue($this->getRoutingMock()));
 
         /** @var \PHPUnit_Framework_MockObject_MockObject|Routing $routing */
         $routing = $this->sut->setConfig($this->getConfigMock())->get(Container::ROUTING);

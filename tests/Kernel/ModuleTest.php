@@ -3,8 +3,8 @@
 namespace Tests;
 
 use PHPUnit_Framework_TestCase;
-use Api\Kernel\Module;
-use Api\Kernel\Routing;
+use SlimApi\Kernel\Module;
+use SlimApi\Kernel\Routing;
 
 class ModuleTest extends PHPUnit_Framework_TestCase
 {
@@ -27,7 +27,7 @@ class ModuleTest extends PHPUnit_Framework_TestCase
         if (!$this->routing) {
             $methods = array('init', 'getSlim', 'run');
             $this->routing = $this
-                ->getMockBuilder('Api\Kernel\Routing')
+                ->getMockBuilder('SlimApi\Kernel\Routing')
                 ->setMethods($methods)
                 ->getMock();
         }

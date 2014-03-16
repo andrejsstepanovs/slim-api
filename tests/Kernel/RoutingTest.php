@@ -3,8 +3,8 @@
 namespace Tests;
 
 use PHPUnit_Framework_TestCase;
-use Api\Kernel\Routing;
-use Api\Kernel\Container;
+use SlimApi\Kernel\Routing;
+use SlimApi\Kernel\Container;
 use Slim\Slim;
 
 class RoutingTest extends PHPUnit_Framework_TestCase
@@ -31,7 +31,7 @@ class RoutingTest extends PHPUnit_Framework_TestCase
         if (!$this->container) {
             $methods = array();
             $this->container = $this
-                ->getMockBuilder('Api\Kernel\Container')
+                ->getMockBuilder('SlimApi\Kernel\Container')
                 ->disableOriginalConstructor()
                 ->setMethods($methods)
                 ->getMock();
@@ -66,12 +66,12 @@ class RoutingTest extends PHPUnit_Framework_TestCase
     public function testSetContainer()
     {
         $actual = $this->sut->setContainer($this->getContainerMock())->getContainer();
-        $this->assertInstanceOf('Api\Kernel\Container', $actual);
+        $this->assertInstanceOf('SlimApi\Kernel\Container', $actual);
     }
 
     public function testInitReturnsSelf()
     {
         $actual = $this->sut->init();
-        $this->assertInstanceOf('Api\Kernel\Routing', $actual);
+        $this->assertInstanceOf('SlimApi\Kernel\Routing', $actual);
     }
 }
