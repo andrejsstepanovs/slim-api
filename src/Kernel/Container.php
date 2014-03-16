@@ -91,7 +91,7 @@ class Container extends Pimple
             /** @var Module $module */
             $moduleClass = $this->getConfig()->get(Config::MODULE);
             $module = is_object($moduleClass) ? $moduleClass : new $moduleClass;
-            $module->setRouting($this[self::ROUTING]);
+            $module->setRouting($this->getRouting());
             return $module;
         };
 
@@ -104,5 +104,13 @@ class Container extends Pimple
     public function getModule()
     {
         return $this->get(self::MODULE);
+    }
+
+    /**
+     * @return Routing
+     */
+    public function getRouting()
+    {
+        return $this->get(self::ROUTING);
     }
 }

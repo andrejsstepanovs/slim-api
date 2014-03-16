@@ -68,7 +68,7 @@ class ContainerTest extends PHPUnit_Framework_TestCase
         if (!$this->config) {
             $methods = array('get');
             $this->config = $this
-                ->getMockBuilder('Api\Kernel\Config')
+                ->getMockBuilder('SlimApi\Kernel\Config')
                 ->setMethods($methods)
                 ->getMock();
         }
@@ -80,14 +80,15 @@ class ContainerTest extends PHPUnit_Framework_TestCase
     {
         $config = $this->getConfigMock();
         $response = $this->sut->setConfig($config);
-        $this->assertInstanceOf('Api\Kernel\Container', $response);
+
+        $this->assertInstanceOf('SlimApi\Kernel\Container', $response);
     }
 
     public function testGetConfig()
     {
         $config = $this->getConfigMock();
         $actual = $this->sut->setConfig($config)->getConfig();
-        $this->assertInstanceOf('Api\Kernel\Config', $actual);
+        $this->assertInstanceOf(get_class($config), $actual);
     }
 
     public function testInitializeRouting()
@@ -95,7 +96,7 @@ class ContainerTest extends PHPUnit_Framework_TestCase
         $this->getRoutingMock()
              ->expects($this->once())
              ->method('setContainer')
-             ->with($this->isInstanceOf('\Api\Kernel\Container'))
+             ->with($this->isInstanceOf('SlimApi\Kernel\Container'))
              ->will($this->returnSelf());
 
         $this->getRoutingMock()
@@ -111,7 +112,7 @@ class ContainerTest extends PHPUnit_Framework_TestCase
              ->will($this->returnValue($this->getRoutingMock()));
 
         /** @var \PHPUnit_Framework_MockObject_MockObject|Routing $routing */
-        $routing = $this->sut->setConfig($this->getConfigMock())->get(Container::ROUTING);
+        $routing = $this->sut->setConfig($this->getConfigMock())->getRouting();
         $this->assertEquals(get_class($this->getRoutingMock()), get_class($routing));
     }
 
