@@ -1,10 +1,4 @@
-[![Build Status](https://travis-ci.org/wormhit/slim-api.png?branch=master)]
-(https://travis-ci.org/wormhit/slim-api)
-
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/wormhit/slim-api/badges/quality-score.png?s=043433cd499dcee86d4a27ee62edf0f7280063b3)]
-(https://scrutinizer-ci.com/g/wormhit/slim-api/)
-
-[![Code Coverage](https://scrutinizer-ci.com/g/wormhit/slim-api/badges/coverage.png?s=017512f08808dee0c83440b91c9cd996503ccc66)]
+[![Build Status](https://travis-ci.org/wormhit/slim-api.png?branch=master)](https://travis-ci.org/wormhit/slim-api) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/wormhit/slim-api/badges/quality-score.png?s=043433cd499dcee86d4a27ee62edf0f7280063b3)](https://scrutinizer-ci.com/g/wormhit/slim-api/) [![Code Coverage](https://scrutinizer-ci.com/g/wormhit/slim-api/badges/coverage.png?s=017512f08808dee0c83440b91c9cd996503ccc66)](https://scrutinizer-ci.com/g/wormhit/slim-api/code-structure/master) [![Latest Stable Version](https://poser.pugx.org/wormhit/slim-api/v/stable.png)](https://packagist.org/packages/wormhit/slim-api) [![License](https://poser.pugx.org/wormhit/slim-api/license.png)](https://packagist.org/packages/wormhit/slim-api)
 
 SlimApi
 =============
