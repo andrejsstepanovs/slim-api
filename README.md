@@ -1,12 +1,10 @@
+# SlimApi
+
+API framework based on [slim][1] and [pimple][2]
+
 [![Build Status](https://travis-ci.org/wormhit/slim-api.png?branch=master)](https://travis-ci.org/wormhit/slim-api) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/wormhit/slim-api/badges/quality-score.png?s=043433cd499dcee86d4a27ee62edf0f7280063b3)](https://scrutinizer-ci.com/g/wormhit/slim-api/) [![Code Coverage](https://scrutinizer-ci.com/g/wormhit/slim-api/badges/coverage.png?s=017512f08808dee0c83440b91c9cd996503ccc66)](https://scrutinizer-ci.com/g/wormhit/slim-api/code-structure/master) [![Latest Stable Version](https://poser.pugx.org/wormhit/slim-api/v/stable.png)](https://packagist.org/packages/wormhit/slim-api) [![License](https://poser.pugx.org/wormhit/slim-api/license.png)](https://packagist.org/packages/wormhit/slim-api)
 
-SlimApi
-=============
-
-Api framework setup using [slim][1] micro framework and [pimple][2]
-
-Install
------
+## Installation
 
 Create composer.json file
 ``` json
@@ -22,10 +20,13 @@ Create composer.json file
 
 Download [composer][3] and run php composer.phar install
 
-Setup
------
+## Execution
 
-After that edit your index.php file
+Application can be quickly started by using [php built in web server][4].
+
+### Index
+
+Before starting server edit your index.php file
 
 ``` php
 <?php
@@ -46,27 +47,28 @@ $container
     ->run();
 ```
 
-Run
------
+### Server
 
-Start application by running
+Start application by executing command from terminal
 
 ``` sh
 php -S localhost:8000
 ```
 
-and point your browser to http://localhost:8080
-You should see slim frameworks 404 page.
+and point your browser to [http://localhost:8080][5]
 
-Configure
------
+Initially application will not be return nothing useful except slim frameworks 404 page.
 
-To create new routing path uncomment $configData = array(...) line in index.php and
-create new routing class under src/Module/Routing.php (was set up in your composer.json)
+### Routing
+
+To set up routing, please uncomment $configData = array(...) line in index.php file.
+Then create new routing class.
+
+*Namespace \Api and path src/ was set up in your composer.json*
 
 ``` php
 <?php
-
+# src/Module/Routing.php
 namespace Api\Module;
 use SlimApi\Kernel\Routing as KernelRouting;
 
@@ -91,15 +93,29 @@ class Routing extends KernelRouting
 }
 ```
 
-Now your custom routing will match "/" and will ask container for 'controller.index.index' class.
-This entry key currently is missing.
-To fix that uncomment your custom container line in index.php (//$container = new Api\Module\Container();)
-and create it under src/Module/Container.php
+This setup will tell slim framework to match "/" request.
+When request is matched, appropriate closure function will be executed.
 
+Usually you will want to point this part of code to get controller and request response object from it.
+SlimApi is using pimple as dependency injection container [pimple][2] to keep object initialization and setup in one place.
+In this case code is asking container for 'controller.index.index' class.
+This entry key now is missing.
+
+### Container
+
+Create custom container by extending SlimApi\Kernel\Container.
+
+Uncomment line in index.php
+
+```php
+$container = new Api\Module\Container();
+```
+
+and create class container class
 
 ``` php
 <?php
-
+# src/Module/Container.php
 namespace Api\Module;
 
 use SlimApi\Kernel\Container as KernelContainer;
@@ -123,13 +139,18 @@ class Container extends KernelContainer
 ```
 
 Now your script will be able to find 'controller.index.index' key.
-But controller class in closure will be not found because it dose not exist yet.
-So last step - create controller where you respond with Slim\Http\Response
-Just create it under src/Controller/Index/IndexController.php
+Still, now controller class in closure will not be found, because it dose not exist yet.
+
+### Controller
+
+Controller usually should return Slim\Http\Response object.
+This response will then be handled by custom routing. In this case Api\Module\Routing.
+
+Create index controller
 
 ``` php
 <?php
-
+# src/Controller/Index/IndexController.php
 namespace Api\Controller\Index;
 
 use Slim\Http\Response;
@@ -146,10 +167,9 @@ class IndexController
 }
 ```
 
-Now you should see json response in browser.
+Now refresh [http://localhost:8080][5] and you should see json response.
 
-Testing
------
+## Testing
 
 You can test simple-api files using command
 ``` sh
@@ -163,3 +183,5 @@ If things dont work out as expected, check terminal output when running php serv
 [1]: http://www.slimframework.com
 [2]: http://pimple.sensiolabs.org
 [3]: http://getcomposer.org
+[4]: http://php.net/manual/en/features.commandline.webserver.php
+[5]: http://localhost:8080
