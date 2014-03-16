@@ -1,3 +1,11 @@
+[![Build Status](https://travis-ci.org/wormhit/slim-api.png?branch=master)]
+(https://travis-ci.org/wormhit/slim-api)
+
+[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/wormhit/slim-api/badges/quality-score.png?s=043433cd499dcee86d4a27ee62edf0f7280063b3)]
+(https://scrutinizer-ci.com/g/wormhit/slim-api/)
+
+[![Code Coverage](https://coveralls.io/repos/wormhit/slim-api/badge.png?branch=master)]
+
 SlimApi
 =============
 

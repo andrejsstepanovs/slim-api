@@ -1,4 +1,5 @@
 language: php
+
 php:
   - "5.5"
   - "5.4"
@@ -8,8 +9,16 @@ before_script:
   - curl -sS https://getcomposer.org/installer | php
   - php composer.phar install
   - chmod 777 travis.phpunit.xml
+  - mkdir -p build/logs
+  - pwd
+  - ls -al
 
 script:
   - cd $TRAVIS_BUILD_DIR;
-  - vendor/bin/phpunit -c $TRAVIS_BUILD_DIR/travis.phpunit.xml
+  - vendor/bin/phpunit --configuration travis.phpunit.xml
   - php vendor/bin/coveralls -v
+
+after_script:
+  - wget https://scrutinizer-ci.com/ocular.phar
+  - pwd
+  - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
