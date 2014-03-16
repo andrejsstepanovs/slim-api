@@ -57,11 +57,11 @@ php -S localhost:8000
 
 and point your browser to [http://localhost:8080][5]
 
-Initially application will not be return nothing useful except slim frameworks 404 page.
+Initially application will return decorated 404 page.
 
 ### Routing
 
-To set up routing, please uncomment $configData = array(...) line in index.php file.
+Set up routing by uncommenting $configData = array(..) line in index.php.
 Then create new routing class.
 
 *Namespace \Api and path src/ was set up in your composer.json*
@@ -96,10 +96,11 @@ class Routing extends KernelRouting
 This setup will tell slim framework to match "/" request.
 When request is matched, appropriate closure function will be executed.
 
-Usually you will want to point this part of code to get controller and request response object from it.
-SlimApi is using pimple as dependency injection container [pimple][2] to keep object initialization and setup in one place.
-In this case code is asking container for 'controller.index.index' class.
-This entry key now is missing.
+Usually closure will create controller and get response object from it.
+
+SlimApi is using [pimple][2] to keep objects in one place.
+
+In this case, code is asking container for 'controller.index.index' class.
 
 ### Container
 
@@ -111,7 +112,7 @@ Uncomment line in index.php
 $container = new Api\Module\Container();
 ```
 
-and create class container class
+and create custom container class
 
 ``` php
 <?php
@@ -139,6 +140,7 @@ class Container extends KernelContainer
 ```
 
 Now your script will be able to find 'controller.index.index' key.
+
 Still, now controller class in closure will not be found, because it dose not exist yet.
 
 ### Controller
