@@ -75,7 +75,11 @@ class Container extends Pimple
             /** @var Routing $routing */
             $routingClass = $this->getConfig()->get(Config::ROUTING);
             $routing = is_object($routingClass) ? $routingClass : new $routingClass;
-            $routing->setContainer($this)->setSlim(new \Slim\Slim());
+
+            $slimClass = $this->getConfig()->get(Config::SLIM);
+            $slim = is_object($slimClass) ? $slimClass : new $slimClass;
+
+            $routing->setContainer($this)->setSlim($slim);
             return $routing;
         };
 

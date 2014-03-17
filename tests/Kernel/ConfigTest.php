@@ -24,7 +24,8 @@ class ConfigTest extends PHPUnit_Framework_TestCase
     {
         $config = array(
             Config::MODULE  => 'module',
-            Config::ROUTING => 'routing'
+            Config::ROUTING => 'routing',
+            Config::SLIM    => 'slim'
         );
         $actual = $this->sut->setConfig($config)->getConfig();
         $this->assertEquals($config, $actual);

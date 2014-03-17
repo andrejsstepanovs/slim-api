@@ -25,6 +25,9 @@ class ContainerTest extends PHPUnit_Framework_TestCase
     /** @var \PHPUnit_Framework_MockObject_MockObject|Routing */
     private $routing;
 
+    /** @var \PHPUnit_Framework_MockObject_MockObject|Slim */
+    private $slim;
+
     /** @var \PHPUnit_Framework_MockObject_MockObject|Config */
     private $config;
 
@@ -63,6 +66,23 @@ class ContainerTest extends PHPUnit_Framework_TestCase
         }
 
         return $this->module;
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject|Slim
+     */
+    protected function getSlimMock()
+    {
+        if (!$this->slim) {
+            $methods = array();
+            $this->slim = $this
+                ->getMockBuilder('Slim\Slim')
+                ->disableOriginalConstructor()
+                ->setMethods($methods)
+                ->getMock();
+        }
+
+        return $this->slim;
     }
 
     /**
@@ -107,14 +127,20 @@ class ContainerTest extends PHPUnit_Framework_TestCase
         $this->getRoutingMock()
              ->expects($this->once())
              ->method('setSlim')
-             ->with($this->isInstanceOf('\Slim\Slim'))
+             ->with($this->isInstanceOf('Slim\Slim'))
              ->will($this->returnSelf());
 
         $this->getConfigMock()
-             ->expects($this->any())
+             ->expects($this->at(0))
              ->method('get')
              ->with($this->equalTo(Config::ROUTING))
              ->will($this->returnValue($this->getRoutingMock()));
+
+        $this->getConfigMock()
+             ->expects($this->at(1))
+             ->method('get')
+             ->with($this->equalTo(Config::SLIM))
+             ->will($this->returnValue($this->getSlimMock()));
 
         /** @var \PHPUnit_Framework_MockObject_MockObject|Routing $routing */
         $routing = $this->sut->setConfig($this->getConfigMock())->getRouting();
@@ -150,6 +176,12 @@ class ContainerTest extends PHPUnit_Framework_TestCase
              ->method('get')
              ->with($this->equalTo(Config::ROUTING))
              ->will($this->returnValue($this->getRoutingMock()));
+
+        $this->getConfigMock()
+             ->expects($this->at(2))
+             ->method('get')
+             ->with($this->equalTo(Config::SLIM))
+             ->will($this->returnValue($this->getSlimMock()));
 
         /** @var \PHPUnit_Framework_MockObject_MockObject|Routing $module */
         $module = $this->sut->setConfig($this->getConfigMock())->getModule();

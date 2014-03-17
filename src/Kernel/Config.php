@@ -21,10 +21,14 @@ class Config
     /** container class config key value */
     const CONTAINER = 'container';
 
+    /** slim class config key value */
+    const SLIM = 'slim';
+
     /** @var array */
     private $config = array(
-        Config::MODULE    => 'SlimApi\Kernel\Module',
-        Config::ROUTING   => 'SlimApi\Kernel\Routing'
+        Config::MODULE  => 'SlimApi\Kernel\Module',
+        Config::ROUTING => 'SlimApi\Kernel\Routing',
+        Config::SLIM    => 'Slim\Slim'
     );
 
     /**
