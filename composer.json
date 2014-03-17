@@ -1,13 +1,9 @@
 {
     "name": "wormhit/slim-api",
-    "description": "php api bootstrap project using slim for routing and pimple for dependency injection container",
+    "description": "PHP API framework based on slim and pimple",
     "license": "Apache-2.0",
-    "type": "framework",
-    "keywords": [
-        "slim",
-        "api",
-        "framework"
-    ],
+    "type": "library",
+    "keywords": ["slim", "api", "framework"],
     "homepage": "https://github.com/wormhit/slimApi",
     "authors": [
         {
@@ -16,9 +12,12 @@
         }
     ],
     "require": {
+        "php": ">=5.3",
         "slim/slim": "2.*",
         "pimple/pimple": "2.0.*@dev",
-        "phpunit/phpunit": "4.*",
+        "phpunit/phpunit": "4.*"
+    },
+    "require-dev": {
         "satooshi/php-coveralls": "dev-master"
     },
     "autoload": {
