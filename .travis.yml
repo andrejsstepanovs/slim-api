@@ -2,8 +2,7 @@ language: php
 
 php:
   - "5.5"
-  - "5.4"
-#  - hhvm
+  - hhvm
 
 before_script:
   - curl -sS https://getcomposer.org/installer | php
