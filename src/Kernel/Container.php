@@ -2,7 +2,7 @@
 
 namespace SlimApi\Kernel;
 
-use Pimple;
+use Pimple\Container as Pimple;
 
 /**
  * Class Container
